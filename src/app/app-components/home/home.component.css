@@ -1,13 +1,20 @@
 .custom-tab{
     border: #ddd solid;
-    height: 65px;
-    width: 150px;
+    height: 80px;
+    width: 200px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     background-color: blue;
     color: white;
 }
 
-.active:b{
-    color:white !important;
+
+.btn-td-border{
+    border-radius: 25px;
+}
+
+.header-profile{
+    border: #ddd solid;   
+    width: 35px;
+    border-radius: 13px;   
 }

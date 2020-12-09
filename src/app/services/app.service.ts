@@ -15,4 +15,12 @@ export class AppService {
   getAppointments(date:any){
     return this.http.post(this.apiURL+'/getAppointment',{date})
   }
+
+  getAppointmentsList(date:any){
+    return this.http.post(this.apiURL+'/getAppointmentsList',{date})
+  }
+
+  updateStatus(status:String){
+    return this.http.post(this.apiURL+'/updateAppointments',{status})
+  }
 }

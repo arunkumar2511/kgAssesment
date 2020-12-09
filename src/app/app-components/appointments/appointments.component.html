@@ -1,10 +1,10 @@
 <div class="ml-5 mt-3 p-3">
     <p class="text-dark bigFont">Appointments |<span class="text-muted"> <a class="ml-2" href="/home">Home</a> > Appointments </span></p>
 </div>
-<div class="ml-5 mr-5 mb-5 p-3 mt-1 row">
+<div class="ml-5 mr-5 mb-5 p-3 row">
     <div class="col-3 bg-white p-3 shadow borderRadius">
         Calendar
-        <ejs-calendar id=calendar [value]='value' > </ejs-calendar >
+        <ejs-calendar (click)="changeDate($event)" id=calendar [value]='value' > </ejs-calendar >
     </div>
     <div class="col-8 bg-white ml-4 p-3 shadow borderRadius">
         <div>
@@ -21,9 +21,9 @@
             <div class="row">
                 <ng-container *ngIf="morningList.length">
                     <ng-container *ngFor="let morning of morningList">
-                        <div class="col-2">
+                        <div class="col-2 mt-4">
                             <button class="btn btn-defaul btn-lg border shadow">
-                            O <span class="ml-2">{{morning['from_text']}} AM</span>
+                            O <span class="ml-2">{{morning['from_text']}}</span>
                             </button>
                         </div>
                     </ng-container>
@@ -37,16 +37,16 @@
             <div class="media">
                 <div class="media-body">
                     Evening<br>
-                    <span class="mt-n1">9:00 AM to 12:00 PM</span>
+                    <span class="mt-n1">5:00 PM to 9:00 PM</span>
                 </div>
             </div>
             <br>
             <div class="row">
                 <ng-container *ngIf="eveningList.length">
                     <ng-container *ngFor="let evening of eveningList">
-                        <div class="col-2">
+                        <div class="col-2  mt-4">
                             <button class="btn btn-defaul btn-lg border shadow">
-                            O <span class="ml-2">{{evening['from_text']}} PM</span>
+                            O <span class="ml-2">{{evening['from_text']}}</span>
                             </button>
                         </div>
                     </ng-container>
@@ -71,7 +71,7 @@
                 From Time
             </div>
             <div class="col-md-4">
-                <ngb-timepicker (ngModelChange)="setTime($event)" [(ngModel)]="from_time" [meridian]="true" formControlName="from_time"></ngb-timepicker>
+                <ngb-timepicker (ngModelChange)="setTime($event)" [(ngModel)]="from_time" [meridian]="false" formControlName="from_time"></ngb-timepicker>
                 <div *ngIf="f.from_time.touched && f.from_time.invalid" class="alert alert-danger">
                     <div *ngIf="f.from_time.errors">From Time is required.</div>
                 </div>
@@ -80,7 +80,7 @@
                 To Time
             </div>
             <div class="col-md-4">
-                <ngb-timepicker [(ngModel)]="to_time" formControlName="to_time" [meridian]="true"></ngb-timepicker>
+                <ngb-timepicker (ngModelChange)="checkDifference($event)" [(ngModel)]="to_time" formControlName="to_time" [meridian]="false"></ngb-timepicker>
                 <div *ngIf="f.to_time.touched && f.to_time.invalid" class="alert alert-danger">
                     <div *ngIf="f.to_time.errors">To Time is required.</div>
                 </div>
@@ -130,7 +130,18 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">Save</button>
+        <ng-container *ngIf="showSave && !showBookedError">
+            <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">Save</button>
+        </ng-container>
+        <div *ngIf="showMoreError" class="alert alert-danger">
+            <div *ngIf="f.phone.errors">Your Slot should not be more than 30 minutes</div>
+        </div>
+        <div *ngIf="showLesserError" class="alert alert-danger">
+            <div *ngIf="f.phone.errors">Your Slot should be atleast 10 minutes</div>
+        </div>
+        <div *ngIf="showBookedError" class="alert alert-danger">
+            <div *ngIf="f.phone.errors">This Slot has been booked already...</div>
+        </div>
     </div>
   </ng-template>
   

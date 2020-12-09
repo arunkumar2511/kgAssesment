@@ -2,15 +2,17 @@
     <div class="container-fluid">
         <ul class="nav navbar-nav">
             <li class="nav-item ml-3">
-                <div class="media bg-white">
+                <div class="media bg-white mt-2 dropdown">
                     <img class="header-profile" src="/assets/images/nishant.jpg">
-                    <div class="media-body ml-2 ">
-                        <b class="text-dark">Dr Nishiant</b>
+                    <div class="media-body ml-2">
+                        <b class="text-dark">Dr Nishiant <span class="dropdown-toggle ml-5"></span></b>
                         <p class="text-muted smallFont">Kids Care Clinic</p>
                     </div>
+                    <div class="ml-4">
+                        <span class="text-secondary">Today</span><span class="dropdown-toggle ml-5"></span><br>
+                       {{date | date : 'dd MMM YYYY'}}
+                    </div>
                 </div>
-            </li>
-            <li class="nav-item ml-3">
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
