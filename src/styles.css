@@ -24,3 +24,13 @@ body{
 .bigFont{
     font-size: 17px !important;
 }
+
+.bgDanger{
+    border-radius: 5px;
+    background-color: #f5cecb;
+}
+
+.bgGreen{
+    border-radius: 5px;
+    background-color: #dff7bc;
+}

@@ -24,6 +24,7 @@
     "@syncfusion/ej2-angular-calendars": "^18.3.53",
     "angular-tabs-component": "^1.0.6",
     "bootstrap": "4.1.1",
+    "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-tabset": "^2.2.0",
     "rxjs": "~6.6.0",
