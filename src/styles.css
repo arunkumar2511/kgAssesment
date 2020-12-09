@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    
+    font-size: 15px;
+    color: blue;
+}
+
+body{
+    background-color: #e1f0f0 !important;
+}
+
+.borderRadius{
+    border-radius: 10px;
+}
+
+.cur-point{
+    cursor: pointer;
+}
+
+.smallFont {
+    font-size: 11px !important;
+}
+
+.bigFont{
+    font-size: 17px !important;
+}

@@ -1,0 +1,137 @@
+<div class="ml-5 mt-3 p-3">
+    <p class="text-dark bigFont">Appointments |<span class="text-muted"> <a class="ml-2" href="/home">Home</a> > Appointments </span></p>
+</div>
+<div class="ml-5 mr-5 mb-5 p-3 mt-1 row">
+    <div class="col-3 bg-white p-3 shadow borderRadius">
+        Calendar
+        <ejs-calendar id=calendar [value]='value' > </ejs-calendar >
+    </div>
+    <div class="col-8 bg-white ml-4 p-3 shadow borderRadius">
+        <div>
+            <div class="float-right text-primary cur-point" (click)="open(content,'Morning')">
+                + Add Slots
+            </div>
+            <div class="media">
+                <div class="media-body">
+                    Morning<br>
+                    <span class="mt-n1">9:00 AM to 12:00 PM</span>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <ng-container *ngIf="morningList.length">
+                    <ng-container *ngFor="let morning of morningList">
+                        <div class="col-2">
+                            <button class="btn btn-defaul btn-lg border shadow">
+                            O <span class="ml-2">{{morning['from_text']}} AM</span>
+                            </button>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+        <div class="mt-5 mb-5">
+            <div class="float-right text-primary cur-point" (click)="open(content,'Evening')">
+                + Add Slots
+            </div>
+            <div class="media">
+                <div class="media-body">
+                    Evening<br>
+                    <span class="mt-n1">9:00 AM to 12:00 PM</span>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <ng-container *ngIf="eveningList.length">
+                    <ng-container *ngFor="let evening of eveningList">
+                        <div class="col-2">
+                            <button class="btn btn-defaul btn-lg border shadow">
+                            O <span class="ml-2">{{evening['from_text']}} PM</span>
+                            </button>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add {{session}} Slots</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body p-3">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+            <div class="control-label col-md-2">
+                From Time
+            </div>
+            <div class="col-md-4">
+                <ngb-timepicker (ngModelChange)="setTime($event)" [(ngModel)]="from_time" [meridian]="true" formControlName="from_time"></ngb-timepicker>
+                <div *ngIf="f.from_time.touched && f.from_time.invalid" class="alert alert-danger">
+                    <div *ngIf="f.from_time.errors">From Time is required.</div>
+                </div>
+            </div> 
+            <div class="control-label col-md-2">
+                To Time
+            </div>
+            <div class="col-md-4">
+                <ngb-timepicker [(ngModel)]="to_time" formControlName="to_time" [meridian]="true"></ngb-timepicker>
+                <div *ngIf="f.to_time.touched && f.to_time.invalid" class="alert alert-danger">
+                    <div *ngIf="f.to_time.errors">To Time is required.</div>
+                </div>
+            </div> 
+        </div>
+        <div class="form-group row">
+            <div class="control-label col-md-2">
+                Patient Name
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" formControlName="patient_name" type="text">
+                <div *ngIf="f.patient_name.touched && f.patient_name.invalid" class="alert alert-danger">
+                    <div *ngIf="f.patient_name.errors">Patient Name is required.</div>
+                </div>
+            </div> 
+            <div class="control-label col-md-2">
+                Age
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" formControlName="age" type="number">
+                <div *ngIf="f.age.touched && f.age.invalid" class="alert alert-danger">
+                    <div *ngIf="f.age.errors">Age is required.</div>
+                </div>
+            </div> 
+        </div>
+        <div class="form-group row">
+            <div class="control-label col-md-2">
+                Sex
+            </div>
+            <div class="col-md-4">
+                <select class="form-control" formControlName="sex">
+                    <option value=''>-- Select Sex --</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div> 
+            <div class="control-label col-md-2">
+                Contact Number
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" formControlName="phone" type="number">
+                <div *ngIf="f.phone.touched && f.phone.invalid" class="alert alert-danger">
+                    <div *ngIf="f.phone.errors">Contact Number is required.</div>
+                </div>
+            </div> 
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">Save</button>
+    </div>
+  </ng-template>
+  
+  

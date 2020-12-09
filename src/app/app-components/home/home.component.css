@@ -1,0 +1,13 @@
+.custom-tab{
+    border: #ddd solid;
+    height: 65px;
+    width: 150px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    background-color: blue;
+    color: white;
+}
+
+.active:b{
+    color:white !important;
+}
