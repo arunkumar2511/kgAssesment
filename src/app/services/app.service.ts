@@ -20,7 +20,7 @@ export class AppService {
     return this.http.post(this.apiURL+'/getAppointmentsList',{date})
   }
 
-  updateStatus(status:String){
-    return this.http.post(this.apiURL+'/updateAppointments',{status})
+  updateStatus(status:String,id:any){
+    return this.http.post(this.apiURL+'/updateAppointments',{status,id})
   }
 }

@@ -53,7 +53,7 @@
                                             <img class="header-profile" src="/assets/images/nishant.jpg">
                                             <div class="media-body ml-2 ">
                                                 <b class="text-secondary">{{appointments['patient_name']}}</b>
-                                                <p class="text-muted smallFont">Kids Care Clinic</p>
+                                                <p class="text-muted smallFont">{{appointments['age']}} {{appointments['sex']}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -75,9 +75,9 @@
                                         </span>
                                     </ng-container>
                                     <ng-container *ngIf="appointments['status'] == 'fixed'">
-                                        <button class="border mt-2 btn-td-border text-muted shadow pl-4 pr-4 p-2 cur-point mt-n2" (click)="updateStatus('visited',i)">
+                                        <span class="border mt-2 btn-td-border text-muted shadow pl-4 pr-4 p-2 cur-point mt-n2" (click)="updateStatus('visited',i,appointments['_id'])">
                                             <i class="far fa-heart-rate"></i> Checkin
-                                        </button>
+                                        </span>
                                     </ng-container>
                                 </td>
                             </tr>

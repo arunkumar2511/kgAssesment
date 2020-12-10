@@ -25,8 +25,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  updateStatus(status:String,index:any){
-    this.service.updateStatus(status).subscribe((data:any)=>{
+  updateStatus(status:String,index:any,id:any){
+    this.service.updateStatus(status,id).subscribe((data:any)=>{
       if(data['status']){
         this.getAppointmentLists()
       }
